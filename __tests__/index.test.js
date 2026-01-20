@@ -37,9 +37,6 @@ test("GET /jokes returns 3 mocked jokes", async () => {
 
 test("GET /jokes error handling", async () => {
   // Arrange
-  const statusCode = 500;
-  const errorMessage = "Unable to fetch data";
-
   nock("https://v2.jokeapi.dev")
     .get("/joke/Any")
     .query({ amount: 3 })
