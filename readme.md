@@ -20,7 +20,8 @@ Through this we can ensure:
 
 ## Composition
 
-- Has one endpoint `/jokes` that fetched random jokes from and external API, the link to the API used it [here](https://jokeapi.dev/).
+- Has one endpoint `/jokes` that fetches random jokes from and external API, the link to the API used it [here](https://jokeapi.dev/).
 - Uses Nock to mock the external API response.
 - Uses Supertest to simulate a GET request to the Express app.
 - Asserts the status code and response body of the response.
+- Asserts proper error handling on endpoint.
