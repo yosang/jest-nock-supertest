@@ -34,3 +34,21 @@ test("GET /jokes returns 3 mocked jokes", async () => {
   expect(response.status).toBe(200);
   expect(response.body).toEqual(mockedData);
 });
+
+test("GET /jokes error handling", async () => {
+  // Arrange
+  const statusCode = 500;
+  const errorMessage = "Unable to fetch data";
+
+  nock("https://v2.jokeapi.dev")
+    .get("/joke/Any")
+    .query({ amount: 3 })
+    .replyWithError("Service unavailable"); // Triggers an error from the fetch side, which enables the error handling
+
+  // Act
+  const { status, body } = await request.get("/jokes");
+
+  // Assert
+  expect(status).toBe(500);
+  expect(body.error).toBe("Unable to fetch data");
+});

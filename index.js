@@ -7,10 +7,9 @@ app.get("/jokes", async (_, res) => {
     const data = await response.json();
     res.status(200).json(data);
   } catch (err) {
+    console.log(err.message);
     res.status(500).json({ status: 500, error: "Unable to fetch data" });
   }
 });
-
-app.listen(3000);
 
 module.exports = app;
